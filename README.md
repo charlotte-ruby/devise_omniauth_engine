@@ -30,6 +30,10 @@ Run the generator
     
 There are a few things that the devise generators will tell you to do regarding flash, mailer, and your root route.  You will need to do these manually after the generator finishes.
 
+Run migrations (devise and authentications model)
+
+    rake db:migrate
+
 After that you can customize the views.  You can add buttons for Twitter, etc in this view:
 
     app/views/devise/shared/_links.html.erb
