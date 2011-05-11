@@ -8,6 +8,8 @@ defaults: &defaults
   
 development:
   <<: *defaults
+  facebook_key: 2d23cf86db2d865fb3eace20f493778f
+  facebook_secret: 921b7f633e6f870b94fad5cebe297d1f
 
 test:
   <<: *defaults
