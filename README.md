@@ -33,10 +33,33 @@ There are a few things that the devise generators will tell you to do regarding 
 Run migrations (devise and authentications model)
 
     rake db:migrate
+    
+By default, dev and test have working app keys for twitter and facebook apps.  These are just test apps, so you will want to add your own app keys/secrets to the config file - config/yettings/devise_omniauth_engine.yml
+
+    defaults: &defaults
+      twitter_key: <yours here>
+      twitter_secret: <yours here>
+      facebook_key: <yours here>
+      facebook_secret: <yours here>
+        
 
 After that you can customize the views.  You can add buttons for Twitter, etc in this view:
 
     app/views/devise/shared/_links.html.erb
+    
+<b>NOTE:</b> If you are using Webrick as your development or test server, it will not be able to handle the size of the packets sent back by Yahoo and Google.  You should use mongrel instead:
+
+    #Gemfile
+    gem "mongrel", "1.2.0.pre2"
+    
+Install w/ bundler
+
+    bundle install
+    
+Start up your mongrel in dev
+
+    rails s
+
 
 ## TODO
 1. Allow users to associate multiple external providers to one account.  You are restricted to one per account currently.  
