@@ -18,7 +18,7 @@ This is meant for blank Rails 3 apps as an automated setup for Devise & Omniauth
 
 Add it to your Gemfile (This will include devise and omniauth gems, so no need to add them)
 
-    gem "devise_omniauth_engine"
+    gem "devise_omniauth_engine", :git=>"git@github.com:charlotte-ruby/devise_omniauth_engine.git"
     
 Install it using Bundler
    
