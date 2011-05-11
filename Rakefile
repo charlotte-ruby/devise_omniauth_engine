@@ -23,5 +23,6 @@ Jeweler::Tasks.new do |gem|
   gem.add_dependency 'omniauth'
   gem.add_dependency 'yettings'
   gem.files.exclude 'test_app'
+  gem.files.exclude 'Gemfile.lock'
 end
 Jeweler::RubygemsDotOrgTasks.new
