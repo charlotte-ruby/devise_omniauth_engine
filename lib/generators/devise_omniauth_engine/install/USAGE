@@ -1,0 +1,5 @@
+Description:
+    This generator installs omniauth, devise and devise_omniauth_engine.  It will run the devise generators for you.
+
+Example:
+    rails generate devise_omniauth_engine:install

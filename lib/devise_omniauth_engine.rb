@@ -1,0 +1,5 @@
+DEVISE_OMNIAITH_ENGINE_PATH = File.dirname(__FILE__) + "/devise_omniauth_engine"
+require "#{DEVISE_OMNIAITH_ENGINE_PATH}/engine.rb"
+require "devise"
+require "omniauth"
+require "yettings"
