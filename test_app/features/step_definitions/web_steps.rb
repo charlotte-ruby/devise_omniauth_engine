@@ -42,7 +42,8 @@ When /^(.*) within ([^:]+):$/ do |step, parent, table_or_string|
 end
 
 Given /^(?:|I )am on (.+)$/ do |page_name|
-  visit path_to(page_name)
+  p "visiting page"
+  p visit path_to(page_name)
 end
 
 When /^(?:|I )go to (.+)$/ do |page_name|

@@ -1,4 +1,4 @@
-MIGRATION_FILES = ["create_authentications_table.rb","devise_create_users.rb"]
+MIGRATION_FILES = ["create_authentications_table.rb","devise_create_users.rb","create_profiles.rb","create_profile_urls.rb","create_profile_locations.rb"]
 
 Then /^there is a user "([^"]*)"$/ do |email|
   User.where(:email=>email).all.size.should eq 1
@@ -57,4 +57,18 @@ Then /^the file "([^"]*)" contains "([^"]*)"$/ do |file, text|
   path = @working_dir+file
   file_content = IO.read(path)
   assert file_content.match(/#{text}/), "#{text} expected in #{path}"
+end
+
+Then /^"([^"]*)"'s profile "([^"]*)" is "([^"]*)"$/ do |email,field,value|
+  u = User.find_by_email(email)
+  u.profile.send(field).should eq value
+end
+
+Then /^"([^"]*)" has profile urls for "([^"]*)"$/ do |email, url_name|
+  u = User.find_by_email(email)
+  has_profile_url = false
+  u.profile.profile_urls.each do |url| 
+    has_profile_url = true if url.name==url_name 
+  end
+  has_profile_url.should be true
 end

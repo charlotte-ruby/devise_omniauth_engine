@@ -1,20 +1,23 @@
 defaults: &defaults
-  twitter_key: 
-  twitter_secret: 
-  facebook_key: 
-  facebook_secret: 
-  
-development:
-  <<: *defaults
-
-test:
-  <<: *defaults
   #TEST TWITTER KEY
   twitter_key: 7aS9miLM9O1wcqV7SPw
   twitter_secret: PjLYk6acABRcbM7xsc7dCUIhfGrRGIb0s89t7ZwcE
   #TEST FB app
   facebook_key: 814feae9e446c24796b3210ad7f3567f
   facebook_secret: a95127a3842bc45a82199e3eceb9b837
+  
+development:
+  <<: *defaults
+  facebook_key: 2d23cf86db2d865fb3eace20f493778f
+  facebook_secret: 921b7f633e6f870b94fad5cebe297d1f
+
+test:
+  <<: *defaults
 
 production:
   <<: *defaults
+  twitter_key: YOUR TWITTER APP KEY HERE
+  twitter_secret: YOUR TWITTER APP SECRET HERE
+  facebook_key: YOUR FACEBOOK APP KEY HERE
+  facebook_secret: YOUR FACEBOOK APP SECRET HERE
+  

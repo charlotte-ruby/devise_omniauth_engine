@@ -21,16 +21,19 @@ module DeviseOmniauthEngine
         generate("devise:install")
         generate("devise User")
         generate("devise:views")
-        inject_into_file "app/models/user.rb", "  has_many :authentications\n\n", :after => "class User < ActiveRecord::Base\n"
-        inject_into_file "app/models/user.rb", ", :omniauthable", :after => ":validatable"
+        inject_into_file "app/models/user.rb", "  has_many :authentications\n", :after => "class User < ActiveRecord::Base\n"
+        inject_into_file "app/models/user.rb", "  has_one :profile\n\n", :after => "  has_many :authentications\n"
+        inject_into_file "app/models/user.rb", ", :omniauthable", :after => ":validatable"        
         devise_for_users = "devise_for :users, :controllers => { :omniauth_callbacks => \"users/omniauth_callbacks\" } do\n    match 'user' => \"users#index\", :as => :user_root\n  end"
         gsub_file 'config/routes.rb', "devise_for :users", devise_for_users
         inject_into_file "config/routes.rb", "\nresources :authentications\n", :after=> "TestApp::Application.routes.draw do"
         migration_template 'db/migrate/create_authentications_table.rb', 'db/migrate/create_authentications_table.rb'
+        migration_template 'db/migrate/create_profiles.rb', 'db/migrate/create_profiles.rb'
+        migration_template 'db/migrate/create_profile_locations.rb', 'db/migrate/create_profile_locations.rb'
+        migration_template 'db/migrate/create_profile_urls.rb', 'db/migrate/create_profile_urls.rb'                        
         copy_file "../../../../../config/yettings/devise_omniauth_engine.yml", "config/yettings/devise_omniauth_engine.yml"
         copy_file "../../../../../app/views/devise/shared/_links.erb", "app/views/devise/shared/_links.erb", :force=>true
         copy_file "../../../../../app/controllers/users_controller.rb", "app/controllers/users_controller.rb"
-        empty_directory "app/views/users"
         copy_file "../../../../../app/views/users/index.html.erb", "app/views/users/index.html.erb"
       end
     end

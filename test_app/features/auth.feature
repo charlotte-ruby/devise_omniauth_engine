@@ -11,6 +11,10 @@ Feature: Devise with Omniauth
     And I press "Sign In"
     Then  I should see "Successfully authorized from Twitter account."
     And there is a user "RailsTestAcct"
+    And "RailsTestAcct"'s profile "name" is "Test Account"
+    And "RailsTestAcct"'s profile "nickname" is "RailsTestAcct"
+    And "RailsTestAcct"'s profile "image" is "http://a0.twimg.com/sticky/default_profile_images/default_profile_1_normal.png"
+    And "RailsTestAcct" has profile urls for "Twitter"
     And there is a "twitter" authentication associated with "RailsTestAcct"
     
   @selenium  
@@ -18,9 +22,14 @@ Feature: Devise with Omniauth
     Given I am on the "facebook" auth page
     And I fill in "email" with "testacctforrailsdev@gmail.com"
     And I fill in "pass" with "thisisatest"
-    And I press "Login"
+    And I press "Log In"
     And I should see "Successfully authorized from Facebook account."
     And there is a user "testacctforrailsdev@gmail.com"
+    And "testacctforrailsdev@gmail.com"'s profile "email" is "testacctforrailsdev@gmail.com"
+    And "testacctforrailsdev@gmail.com"'s profile "first_name" is "BillyBob"
+    And "testacctforrailsdev@gmail.com"'s profile "last_name" is "Tester"
+    And "testacctforrailsdev@gmail.com"'s profile "name" is "BillyBob Tester"
+    And "testacctforrailsdev@gmail.com"'s profile "image" is "http://graph.facebook.com/100002403724401/picture?type=square"
     And there is a "facebook" authentication associated with "testacctforrailsdev@gmail.com"
 
   @selenium
