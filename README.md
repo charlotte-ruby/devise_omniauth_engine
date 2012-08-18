@@ -1,6 +1,7 @@
 # devise_omniauth_engine
 
-# THIS IS STILL A WIP, SO IT IS NOT READY FOR PRIME TIME!  USE AT YOUR OWN RISK!  THIS WILL BE CONSIDERED STABLE WHEN MOVED TO VERSION 0.1.0
+# THIS WAS A PROOF OF CONCEPT AND HAS NOT BEEN UPDATED IN A LONG TIME.  I WOULD RECOMMEND NOT USING IT FOR NEW PROJECTS.
+
 
 This is meant for blank Rails 3 apps as an automated setup for Devise & Omniauth.  This engine will install devise and omniauth into your app and provide you with a callback controller that handles Twitter, Facebook, Google and Yahoo.  When you run the generator it performs the following steps for you:
 
